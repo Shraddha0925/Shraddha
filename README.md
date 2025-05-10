@@ -32,6 +32,3 @@
 
 ---
 
-###  **Connect with Me**  
-- [LinkedIn](https://linkedin.com/in/shraddhapatange)  
-- [GitHub](https://github.com/shraddhapatange)  
