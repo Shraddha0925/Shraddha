@@ -26,9 +26,11 @@ jobs:
         cd Global_Crime_Data_Pipeline/scripts/
         python3 data_ingestion.py
     
-    - name: Upload Crime Data
+       - name: Upload Crime Data
       run: |
-        cd ../data/raw/
+        mkdir -p Global_Crime_Data_Pipeline/data/raw
+        mv Global_Crime_Data_Pipeline/scripts/crime_data.csv Global_Crime_Data_Pipeline/data/raw/
+        cd Global_Crime_Data_Pipeline/data/raw/
         git config --global user.email "shraddha_p09@hotmail.com"
         git config --global user.name "shraddha0925"
         git add crime_data.csv
