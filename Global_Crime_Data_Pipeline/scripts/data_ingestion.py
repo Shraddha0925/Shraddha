@@ -18,4 +18,28 @@ try:
     with open('../configs/config.yaml', 'r') as file:
         config = yaml.safe_load(file)
     log_message("Configurations loaded successfully.")
-ex
+except Exception as e:
+    log_message(f"Error loading configurations: {e}")
+
+# API Endpoint
+url = config.get('api_endpoint', '')
+
+# Fetch Data
+log_message("Fetching data from API...")
+response = requests.get(url)
+
+if response.status_code == 200:
+    log_message("Data fetched successfully!")
+    data = response.json()
+    
+    # Convert to DataFrame
+    df = pd.DataFrame(data)
+    
+    # Create directory if not exists
+    os.makedirs('../data/raw/', exist_ok=True)
+    
+    # Save to CSV
+    df.to_csv('../data/raw/crime_data.csv', index=False)
+    log_message("Data saved to data/raw/crime_data.csv")
+else:
+    log_message(f"Failed to fetch data. Status Code: {response.status_code}")
