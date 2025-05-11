@@ -1,0 +1,36 @@
+name: Data Ingestion Job
+
+on:
+  workflow_dispatch:
+
+jobs:
+  run-data-ingestion:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+    
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.8'
+    
+    - name: Install Dependencies
+      run: |
+        pip install pandas
+        pip install pyyaml
+        pip install requests
+    
+    - name: Run Data Ingestion Script
+      run: |
+        cd Global_Crime_Data_Pipeline/scripts/
+        python3 data_ingestion.py
+    
+    - name: Upload Crime Data
+      run: |
+        cd ../data/raw/
+        git config --global user.email "shraddha_p09@hotmail.com"
+        git config --global user.name "shraddha0925"
+        git add crime_data.csv
+        git commit -m "Added crime_data.csv from GitHub Action"
+        git push
