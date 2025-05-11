@@ -31,4 +31,17 @@
 - Power BI integration with cloud storage  
 
 ---
+## 🚀 **How to Run Data Ingestion Script**
+1. Navigate to the `scripts` folder:
+    ```bash
+    cd Global_Crime_Data_Pipeline/scripts/
+    ```
+
+2. Run the script:
+    ```bash
+    python data_ingestion.py
+    ```
+
+3. Data will be saved in `data/raw/crime_data.csv`.
+
 
