@@ -43,5 +43,6 @@ os.makedirs('../data/raw/', exist_ok=True)
 df.to_csv('Global_Crime_Data_Pipeline/scripts/crime_data.csv', index=False)
 print("Data saved to scripts/crime_data.csv")
 
-else:
-    log_message(f"Failed to fetch data. Status Code: {response.status_code}")
+    else:
+        print(f"Failed to fetch data. Status Code: {response.status_code}")
+
